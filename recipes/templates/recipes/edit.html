@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Scrumptious recipes
+{% endblock title %}
+
+{% block content %}
+
+        <header>
+            <nav id="is-babypink">
+                <a id="is-babypink" href="{% url 'recipe_list' %}">Main Page</a>
+            </nav>
+        </header>
+        <main>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button>Edit</button>
+            </form>
+        </main>
+{% endblock content %}

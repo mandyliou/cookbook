@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Scrumptious Recipes
+{% endblock title %}
+
+{% block content %}
+        <header>
+            <nav id="is-babypink">
+                <a id="is-babypink" href="{% url 'recipe_list' %}">Main Page</a>
+                <a id="is-babypink" href="{% url 'edit_recipe' show_recipe.id %}">Edit</a>
+            </nav>
+        </header>
+        <main>
+            <h1>{{ show_recipe.title }}</h1>
+            <img src="{{ show_recipe.picture }}"  height="200">
+            <p>Created on {{ show_recipe.created_on|date:"F j, Y" }}</p>
+            <div>4.3 stars</div>
+            <p> {{ show_recipe.description }}</p>
+            <h2>Ingredients</h2>
+            <table class="ingredients-table">
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Food item</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ingredient in show_recipe.ingredients.all %}
+                    <tr>
+                        <td>{{ ingredient.amount }}</td>
+                        <td>{{ ingredient.food_item }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                <h2>Steps</h2>
+                <ol>
+                    {% for step in show_recipe.steps.all %}
+                        <li>{{ step.instruction }}</li>
+                    {% endfor %}
+                </ol>
+        </main>
+{% endblock content %}
