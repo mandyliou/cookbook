@@ -1,5 +1,5 @@
 .grid-container {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
@@ -13,9 +13,11 @@ body {
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
     opacity: 1.0;
+    box-sizing: border-box;
+
     }
 
-a, h1 {
+a {
     text-decoration: none;
     color:black
 }
@@ -24,7 +26,10 @@ tr:nth-child(even) {
     background-color: #FADCD2;
 }
 
-h1,  h3 > a {
+h1 {
+    color:rgb(130, 97, 123)
+}
+h3 > a {
     color: rgb(95, 40, 78);
 }
 
@@ -47,9 +52,7 @@ a:hover {
     background-color: palevioletred;
 
 }
-body {
-    box-sizing: border-box;
-}
+
 main {
     padding: 16px;
 }
@@ -60,10 +63,49 @@ footer {
 }
 
 img {
+    width: 250px;
     height: 200px;
+    border-radius: 5px;
+    object-fit: cover;
+
 }
 
 nav{
     border-bottom: 1px solid rgb(157, 117, 126);
     padding: 16px;
+}
+
+.grid-items {
+    place-self: center;
+    width: 50%;
+    padding: 0 100px;
+
+}
+
+#left {
+    flex-shrink: 0;  /* makes sure that content is not cut off in a smaller browser window */
+    font-size: 20px;
+}
+
+.column {
+    height: 100%;  /* allows both columns to span the full height of the browser window */
+    display: flex;
+    flex-direction: column;  /* stacks the left and right headers above the bottom content */
+}
+
+.bottom {
+    flex-grow: 1;  /* ensures that the container will take up the full height of the parent container */
+    overflow-y: auto;  /* adds scroll to this container */
+}
+
+.top-right {
+    flex-shrink: 0;
+    display: flex;
+}
+
+.stars-rating {
+    color: rgb(241, 97, 121);
+    font-size: 20px;
+    opacity: 0.8;
+
 }

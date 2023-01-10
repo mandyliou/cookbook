@@ -10,7 +10,7 @@
 
 from django.forms import ModelForm
 
-from .models import Recipe
+from .models import Recipe, Ingredient
 
 class RecipeForm(ModelForm):
     # email_address = forms.EmailField(max_length=300)
@@ -19,7 +19,16 @@ class RecipeForm(ModelForm):
         fields = [
             "title",
             "picture",
-            "description"
+            "description",
+            "stars"
         ]
 
-    
+class IngredientForm(ModelForm):
+    # email_address = forms.EmailField(max_length=300)
+    class Meta:
+        model = Ingredient
+        fields = [
+            "amount",
+            "food_item",
+            "recipe",
+        ]

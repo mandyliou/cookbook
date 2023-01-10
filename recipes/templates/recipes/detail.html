@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
+{% load my_filters %}
 
 {% block title %}
-Scrumptious Recipes
 {% endblock title %}
 
 {% block content %}
+
         <header>
             <nav id="is-babypink">
                 <a id="is-babypink" href="{% url 'recipe_list' %}">Main Page</a>
                 <a id="is-babypink" href="{% url 'edit_recipe' show_recipe.id %}">Edit</a>
             </nav>
         </header>
+        <center>
         <main>
             <h1>{{ show_recipe.title }}</h1>
             <img src="{{ show_recipe.picture }}"  height="200">
             <p>Created on {{ show_recipe.created_on|date:"F j, Y" }}</p>
-            <div>4.3 stars</div>
-            <p> {{ show_recipe.description }}</p>
+            <div class="stars-rating">{{ show_recipe.stars }} stars ({{ show_recipe.stars|stars }})</div>            <p> {{ show_recipe.description }}</p>
             <h2>Ingredients</h2>
             <table class="ingredients-table">
                 <thead>
@@ -41,4 +42,5 @@ Scrumptious Recipes
                     {% endfor %}
                 </ol>
         </main>
+    </center>
 {% endblock content %}
